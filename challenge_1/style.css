@@ -51,16 +51,17 @@ button:hover {
   padding: 50px;
 }
 
-.grid {
+.square {
   height: 100px;
   width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
+  font-size: 50px;
   background-color: #3c8ad8;
 }
-.grid:hover {
+.square:hover {
   background-color: #fff;
   transition: 0.5s;
 }
