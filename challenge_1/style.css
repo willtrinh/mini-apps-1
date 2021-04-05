@@ -1,8 +1,43 @@
-
-body {
+/*
+ *************************
+    GENERAL STYLINGS
+ *************************
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   justify-content: center;
+}
+h1 {
+  text-transform: uppercase;
+  color: #3c8ad8;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+button {
+  border: 2px solid #3c8ad8;
+  padding: 10px;
+  color: #3c8ad8;
+  font-weight: 300;
+  font-size: 20px;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: #3c8ad8;
+  color: #fff;
+  transition: 0.5s;
 }
 /*
  *************************
@@ -11,24 +46,33 @@ body {
 */
 #board {
   display: flex;
-  justify-content: center;
-  padding: 100px;
+  width: 310px;
+  flex-wrap: wrap;
+  padding: 50px;
 }
 
-td {
+.grid {
   height: 100px;
   width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background-color: #3c8ad8;
 }
-
+.grid:hover {
+  background-color: #fff;
+  transition: 0.5s;
+}
 .vertical {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
 }
 
 .horizontal {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+} */
 /*
  *************************
           FOOTER
