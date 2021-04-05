@@ -1,6 +1,39 @@
+
 body {
   font-family: 'Roboto', sans-serif;
+  text-align: center;
+  justify-content: center;
 }
+/*
+ *************************
+    TIC-TAC-TOE BOARD
+ *************************
+*/
+#board {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+}
+
+td {
+  height: 100px;
+  width: 100px;
+}
+
+.vertical {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.horizontal {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+/*
+ *************************
+          FOOTER
+ *************************
+*/
 footer {
   display: flex;
   position: fixed;
