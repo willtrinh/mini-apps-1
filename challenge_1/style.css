@@ -57,7 +57,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: #fff;
   font-size: 50px;
   background-color: #3c8ad8;
 }
@@ -66,13 +66,13 @@ button:hover {
   transition: 0.5s;
 }
 .vertical {
-  border-left: 3px solid white;
-  border-right: 3px solid white;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
 }
 
 .horizontal {
-  border-top: 3px solid white;
-  border-bottom: 3px solid white;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
 } */
 /*
  *************************
