@@ -1,30 +1,28 @@
 const squares = Array.from(document.getElementsByClassName('square'));
-let square = [];
-let squareCount;
+let square = []; // store the sign played in that specific square
+let squareCount; // increment by 1 each time a player places their sign
+let currentPlayer;
 const player1 = 'X';
 const player2 = 'O';
 const gameStatus = document.getElementById('game-status');
-let gameEnded = false;
 const resetBtn = document.getElementById('resetBtn');
-let currentPlayer;
 
+// Display appropriate messages as the game progresses
 const winMessage = () => `${currentPlayer} has won!`;
 const drawMessage = () => `It's a draw!`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
-
 const init = () => {
   squareCount = 0;
-  gameEnded = false;
   squares.forEach((square) => {
     square.innerHTML = '';
+    square.classList.remove('placed');
   });
   square = [];
-  currentPlayer = 'X';
-  gameStatus.innerHTML = '';
-}
 
-const renderBoard = () => {
+  currentPlayer = 'X';
+  gameStatus.innerHTML = currentPlayerTurn();
+  gameStatus.classList = '';
   // for each grid add vertical and/or horizontal class to draw each grid border
   squares.forEach((square, index) => {
     if (index === 1 || index === 7 || index === 4) {
@@ -55,31 +53,32 @@ const onSquareClick = (e) => {
     return;
   }
   // get the square's id when the user clicks the specific square
-  squareCount++;
   const id = e.target.id;
   // check if the square is already occupied or game has ended
   if (!square[id]) {
+    squareCount++;
     // if not, set the square[id] to the currentPlayer sign & update event
     square[id] = currentPlayer;
     e.target.innerHTML = currentPlayer;
-    if (gameEnded) {
-      return;
-    }
+    e.target.classList.add('placed');
+    console.log(e.target);
     // check if the game is over (player has won or tied) after each player's move
     if (gameOver()) {
       // display messsage when a player has won
       gameStatus.innerHTML = winMessage();
+      gameStatus.classList.add('winner');
       return;
     }
     // draw
     if (!gameOver() && squareCount === 9) {
       gameStatus.innerHTML = drawMessage();
+      gameStatus.classList.add('draw');
       return;
     }
     handlePlayerChange();
   }
 }
-
+// need to implement better logic
 const gameOver = () => {
   // top left
   if (square[0] === currentPlayer) {
@@ -113,15 +112,11 @@ const gameOver = () => {
   }
   // bottom left
   if (square[6] === currentPlayer) {
-    if (square[0] === currentPlayer && square[3] === currentPlayer) {
-      return true;
-    }
     if (square[4] === currentPlayer && square[2] === currentPlayer) {
       return true;
     }
   }
 }
-resetBtn.addEventListener('click', init);
 
+resetBtn.addEventListener('click', init);
 init();
-renderBoard();
