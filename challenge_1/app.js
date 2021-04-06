@@ -17,7 +17,6 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 const init = () => {
   squareCount = 0;
   square = [];
-  // scoreboard
 
   // loser get to play first
   currentPlayer = loser;
@@ -47,6 +46,7 @@ const handlePlayerChange = () => {
   }
   // update currentPlayer's turn display message
   gameStatus.innerHTML = currentPlayerTurn();
+
 }
 
 const currentPlayerAddClass = (e) => {

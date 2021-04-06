@@ -14,9 +14,17 @@
   <body>
     <div class="container">
       <h1>Tic-Tac-Toe</h1>
-      <button id="game-status"></button>
-      <p>X Score: <span id="player1"></span></p>
-      <p>O Score: <span id="player2"></span></p>
+      <table>
+        <tr>
+          <th>X Score</th>
+          <th>O Score</th>
+        </tr>
+        <tr>
+          <td id="player1">0</td>
+          <td id="player2">0</td>
+        </tr>
+      </table>
+      <p id="game-status"></p>
       <div id="board">
         <div class="square" id="0"></div>
         <div class="square" id="1"></div>
