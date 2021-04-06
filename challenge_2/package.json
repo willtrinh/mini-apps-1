@@ -1,16 +1,25 @@
 {
   "name": "challenge_2",
+  "main": "server.js",
   "engines": {
     "node": ">=14.13.1",
     "npm": "6.14.8"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
-    "express": "^4.13.4",
+    "express": "^4.17.1",
     "nodemon": "^2.0.6"
-  }
+  },
+  "version": "1.0.0",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willtrinh/hr-sfo134-mini-apps-1/tree/master/challenge_2"
+  },
+  "author": "Will Trinh",
+  "license": "ISC"
 }
