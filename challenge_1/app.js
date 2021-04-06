@@ -2,6 +2,8 @@ const squares = Array.from(document.getElementsByClassName('square'));
 let square = []; // store the sign played in that specific square
 let squareCount; // increment by 1 each time a player places their sign
 let currentPlayer;
+let loser = 'X';
+let gamesWon = {x: 0, o: 0};
 const player1 = 'X';
 const player2 = 'O';
 const gameStatus = document.getElementById('game-status');
@@ -14,17 +16,17 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 const init = () => {
   squareCount = 0;
-  squares.forEach((square) => {
-    square.innerHTML = '';
-    square.classList.remove('placed');
-  });
   square = [];
+  // scoreboard
 
-  currentPlayer = 'X';
+  // loser get to play first
+  currentPlayer = loser;
   gameStatus.innerHTML = currentPlayerTurn();
   gameStatus.classList = '';
   // for each grid add vertical and/or horizontal class to draw each grid border
   squares.forEach((square, index) => {
+    square.innerHTML = '';
+    square.classList.remove('x', 'o');
     if (index === 1 || index === 7 || index === 4) {
       square.classList.add('vertical');
     }
@@ -47,6 +49,13 @@ const handlePlayerChange = () => {
   gameStatus.innerHTML = currentPlayerTurn();
 }
 
+const currentPlayerAddClass = (e) => {
+  if (currentPlayer === 'X') {
+    e.target.classList.add('x');
+  } else if (currentPlayer === 'O') {
+    e.target.classList.add('o');
+  }
+}
 const onSquareClick = (e) => {
   // stop the game if game over conditions met
   if (gameOver()) {
@@ -60,14 +69,23 @@ const onSquareClick = (e) => {
     // if not, set the square[id] to the currentPlayer sign & update event
     square[id] = currentPlayer;
     e.target.innerHTML = currentPlayer;
-    e.target.classList.add('placed');
-    console.log(e.target);
+    currentPlayerAddClass(e);
+
     // check if the game is over (player has won or tied) after each player's move
     if (gameOver()) {
       // display messsage when a player has won
       gameStatus.innerHTML = winMessage();
-      gameStatus.classList.add('winner');
-      return;
+      if (currentPlayer === 'X') {
+        gameStatus.classList.add('winner', 'x');
+        document.getElementById('player1').innerHTML = ++gamesWon.x;
+        loser = 'O';
+        return;
+      } else if (currentPlayer === 'O') {
+        gameStatus.classList.add('winner', 'o');
+        document.getElementById('player2').innerHTML = ++gamesWon.o;
+        loser = 'X';
+        return;
+      }
     }
     // draw
     if (!gameOver() && squareCount === 9) {
