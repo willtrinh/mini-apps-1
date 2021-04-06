@@ -12,11 +12,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
+
 app.post('/converter', (req, res) => {
   var parsedData = JSON.parse(req.body.data);
-  console.log(Object.keys(parsedData));
-  res.send('hello');
-})
+  var keysArr = Object.keys(parsedData).join(',');
+  // console.log(keysArr);
+  getChildren(parsedData);
+  res.end();
+});
+
+// Get children data of parsed data
+const getChildren = (obj) => {
+  var children = Object.values(obj);
+  children.splice(children.length - 1, 1);
+  console.log(children);
+  // recursively get nested data
+  for (child of obj.children) {
+    getChildren(child);
+  }
+
+}
 
 
 
