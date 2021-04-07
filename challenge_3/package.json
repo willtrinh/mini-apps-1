@@ -1,0 +1,22 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "nodemon server.js & babel ./node_modules/.bin/babel client --out-dir public --watch --presets @babel/preset-react --source-maps inline & live-server --open=./public/index.html --port=8080"
+  },
+  "author": "Will Trinh",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-react": "^7.13.13",
+    "express": "^4.17.1",
+    "live-server": "^1.2.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14"
+  }
+}
