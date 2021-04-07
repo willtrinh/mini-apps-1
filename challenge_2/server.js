@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Promise = require('bluebird');
 const fs = require('fs');
-const formidable = require('formidable');
+const multer = require('multer');
 const path = require('path');
 const app = express();
-const port = 9000;
+const port = process.env.PORT || 9000;
 // This object will contain key-value pairs,
 //where the value can be a string or array (when extended is false),
 // or any type (when extended is true).
@@ -34,9 +34,8 @@ const getChildren = (obj) => {
   }
 }
 
-// post requests handler
-app.post('/', (req, res) => {
-  var parsedData = JSON.parse(req.body.data);
+// helper function
+const parsedDataHelper = (parsedData, res) => {
   var keysArr = Object.keys(parsedData);
   // remove the children element from array
   keysArr.pop();
@@ -64,6 +63,23 @@ app.post('/', (req, res) => {
       });
     }
   })
+};
+
+
+// post requests handler
+app.post('/', (req, res) => {
+  // handle file upload
+  if (req.body.upload) {
+    var filePath = path.join(__dirname, `./samples/${req.body.upload}`);
+    var parsedData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    parsedDataHelper(parsedData, res);
+  }
+  // handle json text
+  if (req.body.text) {
+    var parsedData = JSON.parse(req.body.text);
+    var keysArr = Object.keys(parsedData);
+    parsedDataHelper(parsedData, res);
+  }
 });
 
 

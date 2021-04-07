@@ -4,12 +4,13 @@
     <title>JSON -> CSV Converter</title>
   </head>
   <body>
-    <form method="POST" action="/" enctype="multipart/form-data">
+    <!--  enctype="multipart/form-data" -->
+    <form method="POST" action="/">
       <div>
-        <textarea id="json" name="data" rows="5" cols="30" placeholder="Paste in your JSON text here..."></textarea>
+        <textarea id="json" name="text" rows="30" cols="50" placeholder="Paste in your JSON text here..."></textarea>
       </div>
       <div>
-        <input type="file" name="filePicker" accept=".json, .csv" value="Upload">
+        <input id="upload" type="file" name="upload" accept=".json, .csv" value="Upload">
       </div>
       <input id="submit" type="submit" value="Submit">
     </form>
