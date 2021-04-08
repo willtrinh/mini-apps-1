@@ -29,6 +29,7 @@ const User = mongoose.model('User', checkoutSchema);
 
 app.post('/', (req, res) => {
   var data = new User(req.body);
+  console.log('data ', data);
   res.status(200);
   data.save()
   .then((item) => {

@@ -32,7 +32,7 @@ class App extends React.Component {
   handleNextClick(e) {
     e.preventDefault();
     this.setState({
-      next: this.state.next += 1;
+      next: this.state.next += 1
     })
   }
   handleConfirmation(e) {
@@ -57,8 +57,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button onclick={this.handleCheckout}>Checkout</button>
-        <button onclick={this.handleNextClick}>Next</button>
+        <button onClick={this.handleNextClick}>Next</button>
         {this.state.next === 1 && <F1 handleFormChange = {this.handleFormChange}/>}
         {this.state.next === 2 && <F2 handleFormChange = {this.handleFormChange}/>}
         {this.state.next === 3 && <F3 handleFormChange = {this.handleFormChange}/>}
